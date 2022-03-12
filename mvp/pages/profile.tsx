@@ -1,17 +1,18 @@
-import Card from "../src/components/Card/ProductCard";
+import CardProfile from "../src/components/Card/ProfileCard";
+import Footer from "../src/components/Footer/Footer";
 import Nav from "../src/components/Navbar/Navbar";
 
-  export default function Dashboard() {
-    return (
+export default function Profile(){
+    return(
         <div>
             <header>
                 <Nav/>
             </header>
             <main>
-                <Card/>
+               <CardProfile/>
             </main>
             <footer>
-                
+                <Footer/>
             </footer>
         </div>
     )

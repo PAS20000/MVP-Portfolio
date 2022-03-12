@@ -38,16 +38,18 @@ export default function Nav() {
       <Box bg={useColorModeValue('gray.200', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>
-              <NextImageLink src='/img/logo.png' href='/' width={35} height={35} alt='logo' className={undefined} target={undefined}/>
+              <NextImageLink src={useColorModeValue('/img/logoL.png','/img/logoD.png')} href='/' width={40} height={40} alt='logo' className={undefined} target={undefined}/>
           </Box>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
+              <Button onClick={toggleColorMode} bg={useColorModeValue('gray.400','gray.500')} _hover={{
+                bg:useColorModeValue('purple.500','orange.500')
+              }}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
               {!session &&
-                <Button onClick={onOpen} colorScheme='orange' variant='ghost'>Login/Registro</Button>
+                <Button onClick={onOpen} colorScheme={useColorModeValue('orange','purple')} variant='ghost'>Login/Registro</Button>
               }
               <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -69,11 +71,11 @@ export default function Nav() {
                     </Square>
                   </ModalBody>
                   <Divider/>
-          <ModalFooter>
+                  <ModalFooter>
 
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
             {session &&
               <Menu>
                 <MenuButton
@@ -104,7 +106,7 @@ export default function Nav() {
                   <br />
                   <MenuDivider />
                   <NextLink href='/dashboard/' text={<MenuItem>Painel de controle</MenuItem>} target={undefined}/>
-                  <NextLink href='/perfil/' text={<MenuItem>Perfil</MenuItem>}  target={undefined}/>
+                  <NextLink href='/profile/' text={<MenuItem>Perfil</MenuItem>}  target={undefined}/>
                   <MenuItem onClick={() => signOut()}>
                     Sair
                   </MenuItem>

@@ -48,10 +48,10 @@ import {
           <Stack spacing={4}>
             <Text
               textTransform={'uppercase'}
-              color={'orange.400'}
+              color={useColorModeValue('orange.400','white')}
               fontWeight={600}
               fontSize={'sm'}
-              bg={useColorModeValue('orange.100', 'orange.900')}
+              bg={useColorModeValue('orange.100', 'purple.900')}
               p={2}
               alignSelf={'flex-start'}
               rounded={'md'}>
