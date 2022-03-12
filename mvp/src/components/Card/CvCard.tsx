@@ -17,11 +17,14 @@ import {
     ModalContent, 
     ModalHeader,
     ModalCloseButton,
-    Square
+    Square,
+    Wrap
   } from '@chakra-ui/react';
 import { useState } from 'react';
-
-  import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs, FaMobile } from 'react-icons/fa';
+import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs } from 'react-icons/fa';
+import { BsFillPaletteFill } from "react-icons/bs";
+import { SiTypescript, SiVercel } from "react-icons/si";
+import NextLink from '../Contracts/NextLink/NextLink';
 
 
   export default function CvCard() {
@@ -144,24 +147,71 @@ import { useState } from 'react';
                   {modal === 'HardSkills' ?
                   <ModalBody>
                     <Square>
-                    <Button colorScheme='whatsapp' mr={1}>
-                      <FaNodeJs/>
-                    </Button>
-                    <Button colorScheme='green' mr={1}>
-                      <FaLeaf/>
-                    </Button>
-                    <Button colorScheme='linkedin' mr={1}>
-                      <FaDatabase/>
-                    </Button>
-                    <Button colorScheme='blue'  mr={1}>
-                      <FaAws/>
-                    </Button>
-                    <Button colorScheme='cyan'  mr={1}>
-                      <FaReact/>
-                    </Button>
-                    <Button colorScheme='yellow'  mr={1}>
-                      <FaJs/>
-                    </Button>
+                      <Wrap>
+                        <NextLink href={'https://nodejs.org/en/docs/'} target='_blank' 
+                        text={
+                          <Button colorScheme='whatsapp' leftIcon={<FaNodeJs/>} mt={1}>
+                            Nodejs
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://www.mongodb.com/'} target='_blank' 
+                        text={
+                          <Button colorScheme='whatsapp' leftIcon={<FaLeaf/>} mt={1}>
+                            MongoDB
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://dev.mysql.com/doc/'} target='_blank' 
+                        text={
+                          <Button colorScheme='blue' leftIcon={<FaDatabase/>} mt={1}>
+                            Mysql
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://docs.aws.amazon.com/s3/index.html'} target='_blank' 
+                        text={
+                          <Button colorScheme='linkedin' leftIcon={<FaAws/>} mt={1}>
+                            S3 amazon
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://pt-br.reactjs.org/docs/getting-started.html'} target='_blank' 
+                        text={
+                          <Button colorScheme='blue' leftIcon={<FaReact/>} mt={1}>
+                            React
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://reactnative.dev/docs/getting-started'} target='_blank' 
+                        text={
+                          <Button colorScheme='purple' leftIcon={<FaReact/>} mt={1}>
+                            React Native
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript'} target='_blank' 
+                        text={
+                          <Button colorScheme='yellow' leftIcon={<FaJs/>} mt={1}>
+                            JavaScript
+                          </Button>
+                        }
+                        />
+                        <NextLink href={'https://www.typescriptlang.org/docs/'} target='_blank' 
+                        text={
+                          <Button colorScheme='blue' leftIcon={<SiTypescript/>} mt={1}>
+                            TypeScript
+                          </Button>
+                        }
+                        />
+                        <NextLink href={'https://nextjs.org/docs'} target='_blank' 
+                        text={
+                          <Button colorScheme='gray' leftIcon={<SiVercel/>} mt={1}>
+                            Nextjs
+                          </Button>
+                        }
+                        />
+                      </Wrap>
                     </Square>
                   </ModalBody>
                   :

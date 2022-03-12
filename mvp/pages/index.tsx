@@ -4,7 +4,7 @@ import Home from "../src/components/Home/Home";
 import Nav from "../src/components/Navbar/Navbar";
 
 
-export default function Root(){
+export default function index(){
     return(
         <div>
             <header>

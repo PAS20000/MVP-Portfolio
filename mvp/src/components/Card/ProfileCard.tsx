@@ -7,7 +7,6 @@ import {
     Flex,
     Text,
     Stack,
-    Button,
     useColorModeValue,
   } from '@chakra-ui/react';
   import { useSession } from 'next-auth/react'
@@ -50,35 +49,7 @@ import {
                 {session.user.name}
               </Heading>
               <Text color={'gray.500'}>{session.user.email}</Text>
-            </Stack>
-  
-            <Stack direction={'row'} justify={'center'} spacing={6}>
-              <Stack spacing={0} align={'center'}>
-                <Text fontWeight={600}>23k</Text>
-                <Text fontSize={'sm'} color={'gray.500'}>
-                  Followers
-                </Text>
-              </Stack>
-              <Stack spacing={0} align={'center'}>
-                <Text fontWeight={600}>23k</Text>
-                <Text fontSize={'sm'} color={'gray.500'}>
-                  Followers
-                </Text>
-              </Stack>
-            </Stack>
-  
-            <Button
-              w={'full'}
-              mt={8}
-              bg={useColorModeValue('orange', 'purple')}
-              color={'white'}
-              rounded={'md'}
-              _hover={{
-                transform: 'translateY(-2px)',
-                boxShadow: 'lg',
-              }}>
-              Teste
-            </Button>
+            </Stack>  
           </Box>
         </Box>
       </Center>

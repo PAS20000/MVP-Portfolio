@@ -107,7 +107,7 @@ export default function Nav() {
                   <MenuDivider />
                   <NextLink href='/dashboard/' text={<MenuItem>Painel de controle</MenuItem>} target={undefined}/>
                   <NextLink href='/profile/' text={<MenuItem>Perfil</MenuItem>}  target={undefined}/>
-                  <MenuItem onClick={() => signOut()}>
+                  <MenuItem onClick={() => signOut({ callbackUrl:'/' })}>
                     Sair
                   </MenuItem>
                 </MenuList>
