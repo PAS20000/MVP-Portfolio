@@ -25,8 +25,8 @@ import {
 } from '@chakra-ui/react';
 import { FaGoogle, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import NextImageLink from '../contracts/NextImageLink/NextImageLink';
-import NextLink from '../contracts/NextLink/NextLink';
+import NextImageLink from '../Contracts/NextImageLink/NextImageLink';
+import NextLink from '../Contracts/NextLink/NextLink';
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function Nav() {
@@ -103,8 +103,8 @@ export default function Nav() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <NextLink href='/dashboard/' text={<MenuItem>Painel de controle</MenuItem>} className={undefined} target={undefined}/>
-                  <NextLink href='/perfil/' text={<MenuItem>Perfil</MenuItem>}  className={undefined} target={undefined}/>
+                  <NextLink href='/dashboard/' text={<MenuItem>Painel de controle</MenuItem>} target={undefined}/>
+                  <NextLink href='/perfil/' text={<MenuItem>Perfil</MenuItem>}  target={undefined}/>
                   <MenuItem onClick={() => signOut()}>
                     Sair
                   </MenuItem>
