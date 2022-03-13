@@ -22,7 +22,6 @@ import {
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs } from 'react-icons/fa';
-import { BsFillPaletteFill } from "react-icons/bs";
 import { SiTypescript, SiVercel } from "react-icons/si";
 import NextLink from '../Contracts/NextLink/NextLink';
 
@@ -85,14 +84,14 @@ import NextLink from '../Contracts/NextLink/NextLink';
                 py={1}
                 bg={useColorModeValue('gray.50', 'gray.800')}
                 fontWeight={'400'}>
-                #Web
+                #WEB
               </Badge>
               <Badge
                 px={2}
                 py={1}
                 bg={useColorModeValue('gray.50', 'gray.800')}
                 fontWeight={'400'}>
-                #Mobile
+                #MOBILE
               </Badge>
             </Stack>
   
@@ -146,7 +145,6 @@ import NextLink from '../Contracts/NextLink/NextLink';
                   <ModalCloseButton />
                   {modal === 'HardSkills' ?
                   <ModalBody>
-                    <Square>
                       <Wrap>
                         <NextLink href={'https://nodejs.org/en/docs/'} target='_blank' 
                         text={
@@ -212,7 +210,6 @@ import NextLink from '../Contracts/NextLink/NextLink';
                         }
                         />
                       </Wrap>
-                    </Square>
                   </ModalBody>
                   :
                   <ModalBody>

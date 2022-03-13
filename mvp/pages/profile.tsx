@@ -1,4 +1,4 @@
-import CardProfile from "../src/components/Card/ProfileCard";
+import CardProfile from "../src/components/Cards/ProfileCard";
 import Footer from "../src/components/Footer/Footer";
 import Nav from "../src/components/Navbar/Navbar";
 import { GetServerSideProps } from "next";

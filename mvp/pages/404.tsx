@@ -1,4 +1,5 @@
 import { Box, Heading, Text, Button, useColorModeValue } from '@chakra-ui/react';
+import NextImage from '../src/components/Contracts/NextImage/NextImage';
 import NextLink from '../src/components/Contracts/NextLink/NextLink';
 
 export default function NotFound() {
@@ -21,6 +22,14 @@ export default function NotFound() {
       <Text color={useColorModeValue('gray.500','gray.400')} mb={6}>
         A página aparentemente não existe ;-;
       </Text>
+      <NextImage 
+        src='/img/error.gif' 
+        height={300} 
+        width={400} 
+        alt='image-error' 
+        className={undefined}
+        layout={undefined}
+      />
       <NextLink
       href={'/'}
       target={undefined}
