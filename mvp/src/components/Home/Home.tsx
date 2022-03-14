@@ -12,8 +12,8 @@ import {
   } from '@chakra-ui/react';
   import {
     IoBulbOutline,
-    IoPrism,
-    IoSearchSharp,
+    IoLeaf,
+    IoLogoReact
   } from 'react-icons/io5';
   import { ReactElement } from 'react';
   
@@ -74,19 +74,19 @@ import {
                   <Icon as={IoBulbOutline} color={'yellow.500'} w={5} h={5} />
                 }
                 iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                text={'Next.js'}
+                text={'Nextjs'}
               />
               <Feature
-                icon={<Icon as={IoPrism} color={'green.500'} w={5} h={5} />}
-                iconBg={useColorModeValue('green.100', 'green.900')}
-                text={'Prisma'}
+                icon={<Icon as={IoLogoReact} color={'cyan.500'} w={5} h={5} />}
+                iconBg={useColorModeValue('cyan.100', 'cyan.900')}
+                text={'React'}
               />
               <Feature
                 icon={
-                  <Icon as={IoSearchSharp} color={'purple.500'} w={5} h={5} />
+                  <Icon as={IoLeaf} color={'green.500'} w={5} h={5} />
                 }
-                iconBg={useColorModeValue('purple.100', 'purple.900')}
-                text={'Mysql'}
+                iconBg={useColorModeValue('green.100', 'green.900')}
+                text={'Mogodb'}
               />
             </Stack>
           </Stack>
