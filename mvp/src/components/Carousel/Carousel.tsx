@@ -83,7 +83,7 @@ export default function Carousel() {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((url, index) => (
-          <ProductCard key={Math.random()} imgUrl={url}/>
+          <ProductCard key={index} imgUrl={url}/>
         ))}
       </Slider>
     </Box>

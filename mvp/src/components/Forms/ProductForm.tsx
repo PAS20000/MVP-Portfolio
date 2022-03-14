@@ -84,7 +84,7 @@ import UploadButton from './UploadButton';
                     src={avatar.url}
                     size={useBreakpointValue({ base: 'md', md: 'lg' })}
                     position={'relative'}
-                    zIndex={2}
+                    zIndex={0}
                     _before={{
                       content: '""',
                       width: 'full',
@@ -136,7 +136,7 @@ import UploadButton from './UploadButton';
                    src={session?.user?.image}
                    size={useBreakpointValue({ base: 'md', md: 'lg' })}
                    position={'relative'}
-                   zIndex={2}
+                   zIndex={0}
                    _before={{
                      content: '""',
                      width: 'full',
@@ -156,7 +156,8 @@ import UploadButton from './UploadButton';
             </Stack>
           </Stack>
           <Stack
-            bg={useColorModeValue('gray.300','gray.900')}
+            bg={useColorModeValue('gray.100','gray.900')}
+            boxShadow='dark-lg'
             rounded={'xl'}
             p={{ base: 4, sm: 6, md: 8 }}
             spacing={{ base: 8 }}
@@ -224,20 +225,18 @@ import UploadButton from './UploadButton';
                                 <Square>
                                 <NextLink text={
                                   <Button colorScheme={useColorModeValue('orange','purple')} mr={2}>
-                                      Visualizar Produtos
+                                      Lista de produtos
                                   </Button>
                                 } 
                                  href='/products/' 
                                  target={undefined}
                                 />
-                                <NextLink text={
-                                  <Button colorScheme={'red'}>
-                                      Excluir Produto
+                                <Button colorScheme={'red'} mr={2}>
+                                      Excluir
+                                </Button>
+                                 <Button colorScheme={'blue'}>
+                                      Editar
                                   </Button>
-                                } 
-                                  href='/products/' 
-                                  target={undefined}
-                                />
                               </Square>
                             </ModalBody>
                         </ModalContent>

@@ -14,19 +14,19 @@ export default function NotFound() {
             "linear(to-r, purple.400, purple.500, purple.600)",
         )}
         backgroundClip="text">
-        404
+        401
       </Heading>
       <Text fontSize="18px" mt={3} mb={2}>
-        Página não encontrada
+        Você não tem autorização para acessar esta página.
       </Text>
       <Text color={useColorModeValue('gray.500','gray.400')} mb={6}>
-        A página aparentemente não existe ;-;
+        verifique se você está logado.
       </Text>
       <NextImage 
-        src='/img/error.gif' 
+        src='/img/stop.gif' 
         height={300} 
         width={400} 
-        alt='image-error' 
+        alt='image-stop' 
         className={undefined}
         layout={undefined}
       />

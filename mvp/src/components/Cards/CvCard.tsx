@@ -18,11 +18,13 @@ import {
     ModalHeader,
     ModalCloseButton,
     Square,
-    Wrap
+    Wrap,
+    Container
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs } from 'react-icons/fa';
 import { SiTypescript, SiVercel } from "react-icons/si";
+import CarouselSoftSkills from '../Carousel/CarouselSoftSkills';
 import NextLink from '../Contracts/NextLink/NextLink';
 
 
@@ -213,27 +215,13 @@ import NextLink from '../Contracts/NextLink/NextLink';
                   </ModalBody>
                   :
                   <ModalBody>
-                      <Text>
-                        Trabalho em equipe
-                      </Text>
-                      <Text>
-                        Comunicativo
-                      </Text>
-                      <Text>
-                        Desafios são incríveis
-                      </Text>
-                      <Text>
-                        Criativo
-                      </Text>
-                      <Text>
-                        Aceito críticas
-                      </Text>
+                      <CarouselSoftSkills />
+                      <Divider></Divider>
                   </ModalBody>
                   }
-                  <Divider/>
                   <ModalFooter>
-                    
-                </ModalFooter>
+                      
+                  </ModalFooter>
               </ModalContent>
             </Modal>
             </Stack>

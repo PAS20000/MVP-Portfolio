@@ -61,10 +61,10 @@ export default function ProductCard({ imgUrl }) {
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
-              $57
+              $57,99
             </Text>
             <Text textDecoration={'line-through'} color={'gray.600'}>
-              $199
+              $199,99
             </Text>
           </Stack>
         </Stack>
