@@ -1,12 +1,18 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, Db } from 'mongodb'
 import {} from 'colors'
+
+
+type ConnectType = {
+    db: Db
+    client:MongoClient
+}
 
 const client = new MongoClient(process.env.MONGODB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 })
 console.log(`[ Connecting to database ${process.env.DB_NAME} ]...`.cyan)
-export default async function connect(){
+export default async function connect() : Promise<ConnectType>{
    if(!client.isConnected) await client.connect()
   
    const db = client.db(process.env.DB_NAME)
@@ -17,5 +23,5 @@ export default async function connect(){
     console.log(`[ Error database ${process.env.DB_NAME} is not connected ]`.red)
    }
 
-   return {db, client}
+   return { db, client }
 }

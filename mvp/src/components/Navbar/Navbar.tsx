@@ -40,7 +40,6 @@ export default function Nav() {
           <Box>
               <NextImageLink src={useColorModeValue('/img/logoL.png','/img/logoD.png')} href='/' width={40} height={40} alt='logo' className={undefined} target={undefined}/>
           </Box>
-
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
               <Button onClick={toggleColorMode} bg={useColorModeValue('gray.400','gray.500')} _hover={{
