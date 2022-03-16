@@ -15,7 +15,6 @@
     "@emotion/styled": "^11",
     "antd": "^4.19.2",
     "axios": "^0.26.1",
-    "colors": "^1.4.0",
     "framer-motion": "^6",
     "mongodb": "^4.4.1",
     "next": "12.1.0",
