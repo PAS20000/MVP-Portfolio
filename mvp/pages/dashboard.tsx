@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import { getSession } from 'next-auth/react'
 import Footer from "../src/components/Footer/Footer";
 import ProductForm from "../src/components/Forms/ProductForm";
+import connect from "../utils/mongo";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     const session = await getSession({ req })
@@ -16,13 +17,31 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         }
     }
 
+    const  { db } = await connect()
+
+    const FindUser = await db.collection('users').findOne({
+        email:session.user.email
+    })
+
+    if(!FindUser){
+        return{
+            redirect:{
+                destination:'/401/',
+                permanent:false
+            }
+        }
+    }
+    
+    const FindUsers = await db.collection('users').find({}).toArray()
+    const users = JSON.stringify(FindUsers)
     return{
-        props:{}
+        props:{
+            users:JSON.parse(users)
+        }
     }
 }
 
-
-  export default function Dashboard() {
+  export default function Dashboard({ users }) {
     
     return (
         <div>
@@ -30,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
                 <Nav/>
             </header>
             <main>
-                <ProductForm/>
+                <ProductForm users={users}/>
             </main>
             <footer>
                 <Footer/>

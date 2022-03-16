@@ -7,13 +7,14 @@ import {
     Flex,
     Text,
     Stack,
-    useColorModeValue,
+    useColorModeValue, 
   } from '@chakra-ui/react';
   import { useSession } from 'next-auth/react'
 
   export default function ProfileCard() {
     const { data:session } = useSession();
     
+
     return (
       <Center py={6}>
         <Box
@@ -35,7 +36,7 @@ import {
             <Avatar
               size={'xl'}
               src={
-                session.user.image
+                session?.user?.image
               }
               css={{
                 border: '2px solid white',
@@ -46,10 +47,12 @@ import {
           <Box p={6}>
             <Stack spacing={0} align={'center'} mb={5}>
               <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-                {session.user.name}
+                {session?.user?.name}
               </Heading>
-              <Text color={'gray.500'}>{session.user.email}</Text>
-            </Stack>  
+              <Text color={'gray.500'}>
+                {session?.user?.email}
+              </Text>
+            </Stack>
           </Box>
         </Box>
       </Center>

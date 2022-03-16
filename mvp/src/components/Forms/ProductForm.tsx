@@ -24,33 +24,12 @@ import { useSession } from 'next-auth/react';
 import Carousel from '../Carousel/Carousel';
 import NextLink from '../Contracts/NextLink/NextLink';
 import UploadButton from './UploadButton';
-
-  const avatars = [
-    {
-      name: 'PAS',
-      url: 'https://avatars.githubusercontent.com/u/83708869?v=4',
-    },
-    {
-      name: 'Segun Adebayo',
-      url: 'https://bit.ly/sage-adebayo',
-    },
-    {
-      name: 'Kent Dodds',
-      url: 'https://bit.ly/kent-c-dodds',
-    },
-    {
-      name: 'Prosper Otemuyiwa',
-      url: 'https://bit.ly/prosper-baba',
-    },
-    {
-      name: 'Christian Nwamba',
-      url: 'https://bit.ly/code-beast',
-    },
-  ];
   
-  export default function ProductForm() {
+  export default function ProductForm({ users }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const {data:session} = useSession()
+    
+
     return (
       <Box position={'relative'}>
         <Container
@@ -73,15 +52,15 @@ import UploadButton from './UploadButton';
                 bgClip="text">
                 {session?.user?.name}
               </Text>{' '}
-              Quem já usou o site:
+            total de usuários: {users.length}
             </Heading>
             <Stack direction={'row'} spacing={4} align={'center'}>
               <AvatarGroup>
-                {avatars.map((avatar) => (
+                {users.slice(0,5).map((info) => (
                   <Avatar
-                    key={avatar.name}
-                    name={avatar.name}
-                    src={avatar.url}
+                    key={info.name}
+                    name={info.name}
+                    src={info.image}
                     size={useBreakpointValue({ base: 'md', md: 'lg' })}
                     position={'relative'}
                     zIndex={0}

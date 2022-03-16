@@ -2,25 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
 import connect from '../../utils/mongo'
 
+const handler = nc({})
 
-type User = {
-    name: String
-    email: String
-    image: String
-    createdAt: Date
-}
+handler
 
-const handler = nc({
-    onError: (err, req, res, next) => {
-      console.error(err.stack);
-      res.status(500).end("Something broke!");
-    },
-    onNoMatch: (req, res) => {
-      res.status(404).end("Page is not found");
-    },
-  })
-
-handler.post( async (req:NextApiRequest, res:NextApiResponse<User>) => {
+.post( async (req:NextApiRequest, res:NextApiResponse) => {
    
    const { name, email, image } = req.body  
 
@@ -30,7 +16,7 @@ handler.post( async (req:NextApiRequest, res:NextApiResponse<User>) => {
             email
         })
         if(find){
-            return res.status(401).json({error:'Email has already been registered'})
+            return res.status(200).json({message:'Email has already been registered'})
         }
         const response = await db.collection('users').insertOne({
             name,
@@ -47,3 +33,6 @@ handler.post( async (req:NextApiRequest, res:NextApiResponse<User>) => {
     return res.status(500).json({error:"User not Created"}), console.log(e)
    }
 })
+
+
+export default handler
