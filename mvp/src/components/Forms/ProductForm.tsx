@@ -5,7 +5,6 @@ import {
     Heading,
     Text,
     Container,
-    Input,
     Button,
     SimpleGrid,
     Avatar,
@@ -18,18 +17,19 @@ import {
     ModalCloseButton,
     useDisclosure,
     useColorModeValue,
-    Square
+    Square,
+    Grid
   } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
+import { FaShopify } from 'react-icons/fa';
 import Carousel from '../Carousel/Carousel';
 import NextLink from '../Contracts/NextLink/NextLink';
-import UploadButton from './UploadButton';
-  
+import ProductRegisterForm from './ProductRegisterForm';
+
   export default function ProductForm({ users }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const {data:session} = useSession()
     
-
     return (
       <Box position={'relative'}>
         <Container
@@ -52,15 +52,15 @@ import UploadButton from './UploadButton';
                 bgClip="text">
                 {session?.user?.name}
               </Text>{' '}
-            total de usuários: {users.length}
+            total de pessoas que já usaram o site: <span>{users.length}</span>
             </Heading>
             <Stack direction={'row'} spacing={4} align={'center'}>
               <AvatarGroup>
-                {users.slice(0,5).map((info) => (
+                {users.slice(0,5).map((user) => (
                   <Avatar
-                    key={info.name}
-                    name={info.name}
-                    src={info.image}
+                    key={user.name + Math.random()}
+                    name={user.name}
+                    src={user.image}
                     size={useBreakpointValue({ base: 'md', md: 'lg' })}
                     position={'relative'}
                     zIndex={0}
@@ -134,6 +134,7 @@ import UploadButton from './UploadButton';
               </Flex>
             </Stack>
           </Stack>
+         
           <Stack
             bg={useColorModeValue('gray.100','gray.900')}
             boxShadow='dark-lg'
@@ -156,45 +157,40 @@ import UploadButton from './UploadButton';
                   Painel de controle
                 </Text>
               </Heading>
+              
               <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
                   Registre seus produtos aqui.
               </Text>
-              <Container >
-                <UploadButton/>
-              </Container>
             </Stack>
             <Box as={'form'} mt={10}>
               <Stack spacing={4} mt={4}>
-                <Input
-                  placeholder="Nome do produto"
-                  bg={useColorModeValue('white','gray.800')}
-                  border={0}
-                  color={'gray.500'}
-                  _placeholder={{
-                    color: 'gray.500',
-                  }}
-                />
-                <Input
-                  placeholder="Categoria"
-                  bg={useColorModeValue('white','gray.800')}
-                  border={0}
-                  color={'gray.500'}
-                  _placeholder={{
-                    color: 'gray.500',
-                  }}
-                />
-                <Input
-                  placeholder="Preço"
-                  bg={useColorModeValue('white','gray.800')}
-                  border={0}
-                  color={'gray.500'}
-                  _placeholder={{
-                    color: 'gray.500',
-                  }}
-                />
-                <Button onClick={onOpen} colorScheme={useColorModeValue('orange','purple')}>
+
+                <ProductRegisterForm />
+
+                <Button onClick={onOpen} 
+                bgGradient="linear(to-r, blue.400,cyan.400)"
+                color={'white'}
+                _hover={{
+                  bgGradient: 'linear(to-r, cyan.600,blue.600)',
+                  boxShadow: 'xl',
+                }}>
                   Visualização rápida
                 </Button>
+                <Square>
+                <NextLink text={
+                                <Button leftIcon={<FaShopify/>} 
+                                bgGradient={useColorModeValue("linear(to-r, red.400,orange.400)","linear(to-r, purple.400,pink.400)")}
+                                color={'white'}
+                                _hover={{
+                                  bgGradient: useColorModeValue('linear(to-r, orange.600,red.600)','linear(to-r, pink.600,purple.600)'),
+                                  boxShadow: 'xl',
+                                }}>
+                                      Lista de produtos
+                                </Button>
+                              } 
+                                 href='/products/' 
+                                 target={undefined}
+                                /></Square>
                 <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
                         <ModalOverlay />
                         <ModalContent>
@@ -221,18 +217,6 @@ import UploadButton from './UploadButton';
                         </ModalContent>
                     </Modal>
               </Stack>
-              <Button
-                fontFamily={'heading'}
-                mt={8}
-                w={'full'}
-                bgGradient="linear(to-r, green.400,teal.400)"
-                color={'white'}
-                _hover={{
-                  bgGradient: 'linear(to-r, green.400,teal.400)',
-                  boxShadow: 'xl',
-                }}>
-                Registrar
-              </Button>
             </Box>
             form
           </Stack>

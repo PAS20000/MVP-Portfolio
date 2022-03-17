@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import NextImage from '../src/components/Contracts/NextImage/NextImage';
 import NextLink from '../src/components/Contracts/NextLink/NextLink';
 import LoginModal from '../src/components/Navbar/LoginModal';
-import { axiosConfig } from '../utils/service/axiosConfig';
+import { axiosConfig } from '../src/utils/service/axiosConfig';
 
 export default function NotFound() {
   const {data:session} = useSession()
@@ -24,9 +24,7 @@ export default function NotFound() {
         duration: 9000,
         isClosable: true,
       })
-      setTimeout(() => {
-        router.push('/dashboard/')
-      }, 500);
+      router.push('/dashboard/')
     }
     
   return (

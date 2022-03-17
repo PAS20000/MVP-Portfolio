@@ -35,7 +35,7 @@ export default function ProductCard({ imgUrl }) {
             pos: 'absolute',
             top: 5,
             left: 0,
-            backgroundImage: `url(${imgUrl ? imgUrl:'/img/backL.jpg'})`,
+            backgroundImage: `url(${imgUrl ? imgUrl:'/img/digital_art.jpg'})`,
             filter: 'blur(15px)',
             zIndex: -1,
           }}
@@ -49,7 +49,7 @@ export default function ProductCard({ imgUrl }) {
             height={230}
             width={282}
             objectFit={'cover'}
-            src={imgUrl ? imgUrl:'/img/backL.jpg'}
+            src={imgUrl ? imgUrl:'/img/digital_art.jpg'}
           />
         </Box>
         <Stack pt={10} align={'center'}>

@@ -58,7 +58,6 @@ export default function Nav() {
                       size={'2xl'}
                       src={session.user.image}
                     />
-                    {console.log(session.user.image)}
                   </Center>
                   <br />
                   <Center>

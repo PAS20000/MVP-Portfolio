@@ -1,18 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
-import connect from '../../utils/mongo'
+import connect from '../../src/utils/mongo'
+import upload from '../../src/utils/upload'
+
 
 const handler = nc({})
 
-handler.post( async (req:NextApiRequest, res:NextApiResponse) => {
+.use(upload.single('file'))
+
+.post( async (req:NextApiRequest, res:NextApiResponse) => {
    
-   const { name, email, image, productName, category, price, productImage } = req.body  
+   const { email, productName, category, price } = req.body  
 
    try {
         const { db } = await connect()
         const find = await db.collection('users').findOne({
-            email,
-            name
+            email
         })
         if(find){
 
@@ -20,12 +23,8 @@ handler.post( async (req:NextApiRequest, res:NextApiResponse) => {
             productName,
             category,
             price,
-            productImage,
-            user: { 
-                name,
-                email,
-                image,
-            },
+            productImage: req.file.location,
+            email,
             createdAt: new Date()
         })
             console.log(response)
@@ -42,5 +41,10 @@ handler.post( async (req:NextApiRequest, res:NextApiResponse) => {
    }
 })
 
+export const config = {
+    api :{
+        bodyParser: false,
+    },
+};
 
 export default handler

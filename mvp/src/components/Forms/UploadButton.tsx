@@ -14,10 +14,10 @@ export default function UploadButton({}){
                 img_name:file.name,
                 error:true
             })
-
             return Upload.LIST_IGNORE;
 
           } else {
+            console.log(file)
             useState({
                 img_name:'', 
                 error:false
@@ -29,7 +29,7 @@ export default function UploadButton({}){
 return(
     <Space direction="vertical" style={{ width: '100%' }} size="small">
         <Upload
-            listType='picture' //TypeScript library type error
+            listType='picture-card' //TypeScript library type error
             maxCount={1} //TypeScript library type error
             {...props}
         >

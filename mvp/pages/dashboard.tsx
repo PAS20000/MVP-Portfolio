@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import { getSession } from 'next-auth/react'
 import Footer from "../src/components/Footer/Footer";
 import ProductForm from "../src/components/Forms/ProductForm";
-import connect from "../utils/mongo";
+import connect from "../src/utils/mongo";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     const session = await getSession({ req })

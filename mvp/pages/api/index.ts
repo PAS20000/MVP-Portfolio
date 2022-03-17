@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
-import connect from '../../utils/mongo'
+import connect from '../../src/utils/mongo'
 
 const handler = nc({})
 

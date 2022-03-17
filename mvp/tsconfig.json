@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "utils/mongo.js"  ],
+, "src/utils/mongo.js/utils/mongo.js", "pages/api/product.js"  ],
   "exclude": [
     "node_modules"
   ]

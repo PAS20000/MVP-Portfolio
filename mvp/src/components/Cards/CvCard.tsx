@@ -17,13 +17,11 @@ import {
     ModalContent, 
     ModalHeader,
     ModalCloseButton,
-    Square,
-    Wrap,
-    Container
+    Wrap
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs } from 'react-icons/fa';
-import { SiTypescript, SiVercel } from "react-icons/si";
+import { SiExpress, SiTypescript, SiVercel } from "react-icons/si";
 import CarouselSoftSkills from '../Carousel/CarouselSoftSkills';
 import NextLink from '../Contracts/NextLink/NextLink';
 
@@ -207,6 +205,13 @@ import NextLink from '../Contracts/NextLink/NextLink';
                         <NextLink href={'https://nextjs.org/docs'} target='_blank' 
                         text={
                           <Button colorScheme='gray' leftIcon={<SiVercel/>} mt={1}>
+                            Nextjs
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'https://expressjs.com/pt-br/'} target='_blank' 
+                        text={
+                          <Button colorScheme='teal' leftIcon={<SiExpress/>} mt={1}>
                             Nextjs
                           </Button>
                         }

@@ -11,18 +11,19 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
   import {
-    IoBulbOutline,
     IoLeaf,
+    IoLogoAmazon,
     IoLogoReact
   } from 'react-icons/io5';
-  import { ReactElement } from 'react';
-  
-  interface FeatureProps {
-    text: string;
-    iconBg: string;
-    icon?: ReactElement;
-  }
-  
+import { ReactElement } from 'react';
+import { SiVercel } from "react-icons/si";
+
+interface FeatureProps {
+  text: string;
+  iconBg: string;
+  icon?: ReactElement;
+}
+
   const Feature = ({ text, icon, iconBg }: FeatureProps) => {
     return (
       <Stack direction={'row'} align={'center'}>
@@ -71,9 +72,9 @@ import {
               }>
               <Feature
                 icon={
-                  <Icon as={IoBulbOutline} color={'yellow.500'} w={5} h={5} />
+                  <Icon as={SiVercel} color={'gray.500'} w={5} h={5} />
                 }
-                iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+                iconBg={useColorModeValue('gray.100', 'gray.900')}
                 text={'Nextjs'}
               />
               <Feature
@@ -87,6 +88,13 @@ import {
                 }
                 iconBg={useColorModeValue('green.100', 'green.900')}
                 text={'Mogodb'}
+              />
+                <Feature
+                icon={
+                  <Icon as={IoLogoAmazon} color={'yellow.500'} w={5} h={5} />
+                }
+                iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+                text={'S3 amazon'}
               />
             </Stack>
           </Stack>
