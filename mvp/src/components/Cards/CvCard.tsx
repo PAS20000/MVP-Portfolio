@@ -17,12 +17,12 @@ import {
     ModalContent, 
     ModalHeader,
     ModalCloseButton,
-    Wrap
+    Wrap,
+    Square
   } from '@chakra-ui/react';
 import { useState } from 'react';
-import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs } from 'react-icons/fa';
+import { FaNodeJs, FaReact, FaAws, FaLeaf, FaDatabase, FaJs, FaUserAstronaut, FaVoicemail, FaFileInvoice, FaLaptopCode, FaCheck } from 'react-icons/fa';
 import { SiExpress, SiTypescript, SiVercel } from "react-icons/si";
-import CarouselSoftSkills from '../Carousel/CarouselSoftSkills';
 import NextLink from '../Contracts/NextLink/NextLink';
 
 
@@ -220,7 +220,37 @@ import NextLink from '../Contracts/NextLink/NextLink';
                   </ModalBody>
                   :
                   <ModalBody>
-                      <CarouselSoftSkills />
+                    <Square>
+                        <Wrap>
+                        <NextLink href={'#'} target='' 
+                        text={
+                          <Button colorScheme='whatsapp' variant={'ghost'} leftIcon={<FaUserAstronaut/>} mt={1}>
+                            Determinado
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'#'} target='' 
+                        text={
+                          <Button colorScheme='whatsapp' variant={'ghost'} leftIcon={<FaFileInvoice/>} mt={1}>
+                            Cuminicativo
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'#'} target='' 
+                        text={
+                          <Button colorScheme='blue' variant={'ghost'} leftIcon={<FaLaptopCode/>} mt={1}>
+                            Criativo
+                          </Button>
+                        }
+                        />
+                         <NextLink href={'#'} target='' 
+                        text={
+                          <Button colorScheme='blue' variant={'ghost'} leftIcon={<FaCheck/>} mt={1}>
+                            Foco em resultados
+                          </Button>
+                        }
+                        />
+                        </Wrap></Square>
                       <Divider></Divider>
                   </ModalBody>
                   }
