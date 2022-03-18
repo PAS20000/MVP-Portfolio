@@ -4,6 +4,7 @@ import { getSession } from 'next-auth/react'
 import Footer from "../src/components/Footer/Footer";
 import ProductForm from "../src/components/Forms/ProductForm";
 import connect from "../src/utils/mongo";
+import NextHead from "../src/components/Contracts/NextHead/NextHead";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     const session = await getSession({ req })
@@ -45,6 +46,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     
     return (
         <div>
+            <NextHead title={'dashboard'} canonical={undefined} description='...' googleBot={undefined} robots={undefined} />
             <header>
                 <Nav/>
             </header>

@@ -10,6 +10,7 @@ import ServiceCard from "../src/components/Cards/ServiceCard";
 import connect from "../src/utils/mongo";
 import ProductCard from "../src/components/Cards/ProductCard";
 import { useEffect, useState } from "react";
+import NextHead from "../src/components/Contracts/NextHead/NextHead";
 
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -34,6 +35,7 @@ export default function Products({ products }) {
     }, [])
     return(
         <div>
+            <NextHead title={'products'} canonical={undefined} description='...' googleBot={undefined} robots={undefined} />
             <header>
                 <Nav/>
             </header>

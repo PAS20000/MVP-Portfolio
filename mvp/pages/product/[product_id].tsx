@@ -6,6 +6,7 @@ import Nav from '../../src/components/Navbar/Navbar';
 import Footer from '../../src/components/Footer/Footer';
 import { useRouter } from 'next/router';
 import Load from '../../src/components/Cards/LoadCard';
+import NextHead from '../../src/components/Contracts/NextHead/NextHead';
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -57,6 +58,7 @@ export default function Product({ product }){
    }
     return(
         <div>
+            <NextHead title={'Product'} canonical={undefined} description='...' googleBot={undefined} robots={undefined} />
             <header>
                 <Nav/>
             </header>
