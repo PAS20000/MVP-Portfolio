@@ -18,7 +18,8 @@ export const getStaticProps: GetStaticProps = async () => {
     return{
         props:{
             products:JSON.parse(products)
-        }
+        },
+        revalidate: 10
     }
 }
 
@@ -30,18 +31,21 @@ export default function Products({ products }) {
                 <Nav/>
             </header>
             <main>
-                <ServiceCard/>
-                <Flex flexWrap={'wrap'}>
-                {products.map((product) => (
-                    <ProductCard
-                        key={product._id}
-                        productName={product.productName} 
-                        productPrice={product.price}
-                        productCategory={product.category}
-                        productImage={product.productImage}
-                    />
-                ))}
-                </Flex>
+                <section>
+                    <ServiceCard/>
+                    <Flex flexWrap={'wrap'}>
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product._id}
+                            product_id={product._id}
+                            productName={product.productName} 
+                            productPrice={product.price}
+                            productCategory={product.category}
+                            productImage={product.productImage}
+                        />
+                    ))}
+                    </Flex>
+                </section>
             </main>
             <footer>
                 <Footer/>

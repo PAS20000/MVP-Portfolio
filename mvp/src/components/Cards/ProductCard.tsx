@@ -6,9 +6,12 @@ import {
   Text,
   Stack,
   Image,
+  Flex,
 } from '@chakra-ui/react';
+import NextLink from '../Contracts/NextLink/NextLink';
 
 export default function ProductCard({  
+  product_id,
   productName, 
   productPrice,
   productCategory,
@@ -17,6 +20,7 @@ export default function ProductCard({
  
   return (
     <Center py={12}>
+      <NextLink href={`/product/${product_id}`} target={undefined} text={
       <Box
         role={'group'}
         p={6}
@@ -49,9 +53,9 @@ export default function ProductCard({
               filter: 'blur(20px)',
             },
           }}>
-          <Image 
+          <Image
             rounded={'lg'}
-            height={230}
+            height={250}
             width={282}
             objectFit={'cover'}
             src={productImage ? productImage:'/img/digital_art.jpg'}
@@ -61,19 +65,23 @@ export default function ProductCard({
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
             {productCategory}
           </Text>
-          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500} textTransform={'uppercase'}>
             {productName}
           </Heading>
           <Stack direction={'row'} align={'center'}>
-            <Text fontWeight={800} fontSize={'xl'}>
-              ${(parseFloat(productPrice) - parseFloat(productPrice) * 0.10).toFixed(2).toString().replace('.',',')}
-            </Text>
-            <Text textDecoration={'line-through'} color={'gray.600'}>
-              ${productPrice.replace('.',',')}
-            </Text>
+            <Flex direction={'column'}>
+              <Text fontWeight={800} fontSize={'xl'} color={useColorModeValue('orange.400','purple.500')}>
+                ${(parseFloat(productPrice) - parseFloat(productPrice) * 0.10).toFixed(2).toString().replace('.',',')}
+              </Text>
+              <Text textDecoration={'line-through'} color={'gray.600'} textAlign={'center'}>
+                ${productPrice.replace('.',',')}
+              </Text>
+            </Flex>
           </Stack>
         </Stack>
       </Box>
+      }
+      />
     </Center>
   );
 }

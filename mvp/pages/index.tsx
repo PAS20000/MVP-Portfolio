@@ -11,8 +11,10 @@ export default function index(){
                 <Nav/>
             </header>
             <main>
-                <CvCard/>
-                <Home/>
+                <section>
+                    <CvCard/>
+                    <Home/>
+                </section>
             </main>
             <footer>
                 <Footer/>

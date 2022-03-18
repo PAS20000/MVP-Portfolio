@@ -1,7 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
+import Auth from '../../src/utils/auth'
 import connect from '../../src/utils/mongo'
 import upload from '../../src/utils/upload'
+
 
 const handler = nc({})
 
@@ -17,12 +19,13 @@ const handler = nc({})
         }
     })
 
-.use(upload.single('file'))
+.use(Auth,upload.single('file'))
+
 
 .post( async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
         const { email, productName, category, price } = req.body
-
+       
         try {
                 const { db } = await connect()
                 const findUser = await db.collection('users').findOne({
@@ -30,7 +33,7 @@ const handler = nc({})
                 })
                 if(findUser){
 
-                const response = await db.collection('products').insertOne({
+                const insert = await db.collection('products').insertOne({
                     productName,
                     category,
                     price,
@@ -41,8 +44,9 @@ const handler = nc({})
                         name:findUser.name,
                         image:findUser.image
                     },
-                    createdAt: new Date()
+                    createdAt: new Date().toLocaleDateString()
                 })
+
                 return res.status(201).json({})
             } else {
                 return res.status(403).json({error:'Product not Created, email not find'})

@@ -24,7 +24,7 @@ export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
   
   return (
-    <>
+    <nav>
       <Box bg={useColorModeValue('gray.200', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>
@@ -80,6 +80,6 @@ export default function Nav() {
           </Flex>
         </Flex>
       </Box>
-    </>
+    </nav>
   );
 }

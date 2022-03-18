@@ -16,10 +16,10 @@ const upload = multer({
         bucket: process.env.AWS_BUCKET,
         acl:'public-read',
         contentType: multerS3.AUTO_CONTENT_TYPE,
-        metadata(req, file:any, cb) : void {
+        metadata(req: any, file: { fieldname: any; }, cb: (arg0: any, arg1: { fieldName: any; }) => void) : void {
             cb(null, { fieldName: file.fieldname });
         },
-        key(req, file, cb) :void{
+        key(req: any, file: { originalname: any; }, cb: (arg0: any, arg1: string) => void) :void {
             cb(null, `${Date.now()-Math.random()}-${file.originalname}`)
         },
     }),

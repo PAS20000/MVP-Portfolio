@@ -9,6 +9,7 @@ export default function ProductRegisterForm() {
     const [name, setName] = useState('')
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
+    const [file, setFile] = useState('')
     const {data:session} = useSession()
     const [status, setStatus] = useState({img_name:'', error:false})
     const toast = useToast()
@@ -31,20 +32,20 @@ export default function ProductRegisterForm() {
             return Upload.LIST_IGNORE;
 
           } else {
-            console.log(file)
-            useState({
+            setFile(file)
+            setStatus({
                 img_name:'', 
                 error:false
             })
           }
         },
     }
-
+    console.log(file)
     const nameChange = (e) => setName(e.target.value)
     const categoryChange = (e) => setCategory(e.target.value)
     const priceChange = (e) => setPrice(e.target.value)
-    
    
+
     const ProductRegisterData = async () => {
         if(!name || !category || !price){
             return toast({
@@ -55,13 +56,24 @@ export default function ProductRegisterForm() {
                 isClosable:true
             })
         }
-        const register = await axiosConfig.post('/api/product/', {
-            productName:name,
-            category:category,
-            price:price,
-            productImage:'',
+        /*
+        productName:name.toUpperCase(),
+            category:category.toUpperCase(),
+            price:price.replace(',','.'),
+            file:file,
             email:session.user.email
-        })
+        
+        */
+            const formData = new FormData();
+            formData.append('productName',`${name.toUpperCase()}`);
+            formData.append('category',`${category.toUpperCase()}`);
+            formData.append('price',`${price.replace(',','.')}`);
+            formData.append('file', file);
+            formData.append('email',`${session.user.email}`);
+
+        const register = await axiosConfig.post('/api/product/', formData, { headers:{
+            "Content-Type": "multipart/form-data"
+        }})
     }
     return(
         <FormControl isRequired >
@@ -138,8 +150,10 @@ export default function ProductRegisterForm() {
                 color: 'gray.500',
             }}
             onChange={priceChange}
+            type={'number'}
             />
             <Button
+            onClick={ProductRegisterData}
             fontFamily={'heading'}
             type='button'
             mt={8}

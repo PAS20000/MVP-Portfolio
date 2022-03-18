@@ -84,7 +84,8 @@ export default function Carousel() {
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {products.slice(0,3).map((product) => (
           <ProductCard 
-            key={product._id} 
+            key={product._id}
+            product_id={product._id}
             productImage={product.productImage}
             productName={product.productName} 
             productPrice={product.price}

@@ -196,24 +196,8 @@ import ProductRegisterForm from './ProductRegisterForm';
                         <ModalOverlay />
                         <ModalContent>
                             <ModalBody>
-                              <Carousel/>
+                                <Carousel/>
                               <ModalCloseButton />
-                                <Square>
-                                <NextLink text={
-                                <Button leftIcon={<FaShopify/>} 
-                                bgGradient={useColorModeValue("linear(to-r, red.400,orange.400)","linear(to-r, purple.400,pink.400)")}
-                                color={'white'}
-                                _hover={{
-                                  bgGradient: useColorModeValue('linear(to-r, orange.600,red.600)','linear(to-r, pink.600,purple.600)'),
-                                  boxShadow: 'xl',
-                                }}>
-                                    Lista de produtos
-                                </Button>
-                                } 
-                                 href='/products/' 
-                                 target={undefined}
-                                />
-                              </Square>
                             </ModalBody>
                         </ModalContent>
                     </Modal>

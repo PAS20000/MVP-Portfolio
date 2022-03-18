@@ -1,11 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import nc from 'next-connect'
+import Auth from '../../src/utils/auth'
 import connect from '../../src/utils/mongo'
 
 const handler = nc({})
 
-handler
-
+.use(Auth)
+.get((req:NextApiRequest, res:NextApiResponse) => {
+    return res.status(200).json({M:true})
+})
 .post( async (req:NextApiRequest, res:NextApiResponse) => {
    
    const { email } = req.body  

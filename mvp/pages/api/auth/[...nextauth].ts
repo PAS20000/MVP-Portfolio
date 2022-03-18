@@ -18,6 +18,7 @@ export const authOptions = {
             clientSecret: process.env.LINKEDIN_CLIENT_SECRET
         })
     ],
+    
     secret:process.env.SECRET,
 }
 
