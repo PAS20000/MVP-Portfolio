@@ -87,7 +87,7 @@ interface FeatureProps {
                   <Icon as={IoLeaf} color={'green.500'} w={5} h={5} />
                 }
                 iconBg={useColorModeValue('green.100', 'green.900')}
-                text={'Mogodb'}
+                text={'Mongodb'}
               />
                 <Feature
                 icon={
