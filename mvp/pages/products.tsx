@@ -1,12 +1,15 @@
 import { GetStaticProps } from "next";
 import {
-  Flex
+  Box,
+  Flex, 
+  useBreakpointValue
 } from '@chakra-ui/react';
 import Nav from "../src/components/Navbar/Navbar";
 import Footer from "../src/components/Footer/Footer";
 import ServiceCard from "../src/components/Cards/ServiceCard";
 import connect from "../src/utils/mongo";
 import ProductCard from "../src/components/Cards/ProductCard";
+import { useEffect, useState } from "react";
 
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,16 +27,20 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Products({ products }) {
+    const [width, setWidth] = useState(Number)
 
+    useEffect(() => {
+        setWidth(window.innerWidth)
+    }, [])
     return(
         <div>
             <header>
                 <Nav/>
             </header>
             <main>
-                <section>
+                <Box as={'section'}>
                     <ServiceCard/>
-                    <Flex flexWrap={'wrap'}>
+                    <Flex flexWrap={'wrap'} flexDirection={width > 777 ? 'row':'column'}>
                     {products.map((product) => (
                         <ProductCard
                             key={product._id}
@@ -45,7 +52,7 @@ export default function Products({ products }) {
                         />
                     ))}
                     </Flex>
-                </section>
+                </Box>
             </main>
             <footer>
                 <Footer/>

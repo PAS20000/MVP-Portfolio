@@ -10,6 +10,7 @@ export default function ProductRegisterForm() {
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
     const [file, setFile] = useState('')
+    const [load, setLoad] = useState(false)
     const {data:session} = useSession()
     const [status, setStatus] = useState({img_name:'', error:false})
     const toast = useToast()
@@ -39,11 +40,13 @@ export default function ProductRegisterForm() {
             })
           }
         },
+        
     }
-    console.log(file)
+    
     const nameChange = (e) => setName(e.target.value)
     const categoryChange = (e) => setCategory(e.target.value)
     const priceChange = (e) => setPrice(e.target.value)
+    
    
 
     const ProductRegisterData = async () => {
@@ -56,30 +59,48 @@ export default function ProductRegisterForm() {
                 isClosable:true
             })
         }
-        /*
-        productName:name.toUpperCase(),
-            category:category.toUpperCase(),
-            price:price.replace(',','.'),
-            file:file,
-            email:session.user.email
-        
-        */
+
             const formData = new FormData();
             formData.append('productName',`${name.toUpperCase()}`);
             formData.append('category',`${category.toUpperCase()}`);
             formData.append('price',`${price.replace(',','.')}`);
             formData.append('file', file);
             formData.append('email',`${session.user.email}`);
+        
+       try {
+        const form = document.querySelector('form')
+           setLoad(true)
+            const register = await axiosConfig.post('/api/product/', formData, { headers:{
+                "Content-Type": "multipart/form-data"
+            }})
+            form.reset()
+            setLoad(false)
+            toast({
+                title: 'Sucesso',
+                description: 'Produto registrado', 
+                status: 'success',
+                duration: 9000,
+                isClosable:true
+            })
 
-        const register = await axiosConfig.post('/api/product/', formData, { headers:{
-            "Content-Type": "multipart/form-data"
-        }})
+       } catch (e) {
+            setLoad(false)
+            toast({
+                title: 'Erro',
+                description: 'Produto não registrado', 
+                status: 'error',
+                duration: 9000,
+                isClosable:true
+            }), console.log(e)
+       }
     }
+
     return(
         <FormControl isRequired >
-            <Container mb={10}>
+            <Container mb={10} >
             <Space direction="vertical" style={{ width: '100%' }} size="small">
                 <Upload
+                name='upload'
                     {...props}
                 >
                     {status.error &&
@@ -112,6 +133,7 @@ export default function ProductRegisterForm() {
             Nome:
             </FormLabel>
             <Input
+            defaultValue={''}
             placeholder="Nome do produto"
             bg={useColorModeValue('white','gray.800')}
             border={0}
@@ -127,6 +149,7 @@ export default function ProductRegisterForm() {
             Categoria
             </FormLabel>
             <Input
+            defaultValue={''}
             placeholder="Categoria"
             bg={useColorModeValue('white','gray.800')}
             border={0}
@@ -142,6 +165,7 @@ export default function ProductRegisterForm() {
             Preço:
             </FormLabel>
             <Input
+            defaultValue={''}
             placeholder="Por padrão é aplicado 10% de desconto"
             bg={useColorModeValue('white','gray.800')}
             border={0}
@@ -152,6 +176,22 @@ export default function ProductRegisterForm() {
             onChange={priceChange}
             type={'number'}
             />
+            {load ? 
+            <Button
+            isLoading
+            fontFamily={'heading'}
+            type='button'
+            mt={8}
+            w={'full'}
+            bgGradient="linear(to-r, green.400, teal.400)"
+            color={'white'}
+            _hover={{
+            bgGradient: 'linear(to-r, green.600, teal.600)',
+            boxShadow: 'xl',
+            }}>
+            Registrar
+            </Button>
+            :
             <Button
             onClick={ProductRegisterData}
             fontFamily={'heading'}
@@ -166,6 +206,7 @@ export default function ProductRegisterForm() {
             }}>
             Registrar
             </Button>
+        }
       </FormControl>
     )
 }

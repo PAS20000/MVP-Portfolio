@@ -212,7 +212,7 @@ import NextLink from '../Contracts/NextLink/NextLink';
                          <NextLink href={'https://expressjs.com/pt-br/'} target='_blank' 
                         text={
                           <Button colorScheme='teal' leftIcon={<SiExpress/>} mt={1}>
-                            Nextjs
+                            Express
                           </Button>
                         }
                         />

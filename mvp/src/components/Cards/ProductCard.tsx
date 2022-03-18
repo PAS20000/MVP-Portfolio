@@ -19,7 +19,7 @@ export default function ProductCard({
 }) {
  
   return (
-    <Center py={12}>
+    <Center py={12} as={'article'}>
       <NextLink href={`/product/${product_id}`} target={undefined} text={
       <Box
         role={'group'}
@@ -71,10 +71,10 @@ export default function ProductCard({
           <Stack direction={'row'} align={'center'}>
             <Flex direction={'column'}>
               <Text fontWeight={800} fontSize={'xl'} color={useColorModeValue('orange.400','purple.500')}>
-                ${(parseFloat(productPrice) - parseFloat(productPrice) * 0.10).toFixed(2).toString().replace('.',',')}
+                R${(parseFloat(productPrice) - parseFloat(productPrice) * 0.10).toFixed(2).toString().replace('.',',')}
               </Text>
               <Text textDecoration={'line-through'} color={'gray.600'} textAlign={'center'}>
-                ${productPrice.replace('.',',')}
+               R${parseFloat(productPrice).toFixed(2).replace('.',',')}
               </Text>
             </Flex>
           </Stack>

@@ -1,13 +1,21 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiResponse } from 'next'
 import nc from 'next-connect'
 import Auth from '../../src/utils/auth'
 import connect from '../../src/utils/mongo'
 import upload from '../../src/utils/upload'
 
+interface NextApiReq {
+   file:any,
+   email:String,
+   productName:String,
+   category:String,
+   price:String,
+   body:any
+}
 
-const handler = nc({})
+const handler = nc<NextApiReq, NextApiResponse>({})
 
-.get(async (req:NextApiRequest, res: NextApiResponse): Promise<void> => {
+.get(async (req, res): Promise<void> => {
         try {
             const { db } = await connect()
             const products = await db.collection('products').find({}).toArray()
@@ -21,8 +29,7 @@ const handler = nc({})
 
 .use(Auth,upload.single('file'))
 
-
-.post( async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+.post( async (req, res): Promise<void> => {
 
         const { email, productName, category, price } = req.body
        

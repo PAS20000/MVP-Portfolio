@@ -25,7 +25,7 @@ import NextLink from '../Contracts/NextLink/NextLink';
   export default function ProductDetailsCard({ product }) {
     return (
     <article>
-      <Container maxW={'7xl'}>
+      <Container maxW={'7xl'} animation={'ease-in'}>
         
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
@@ -41,11 +41,11 @@ import NextLink from '../Contracts/NextLink/NextLink';
               fit={'cover'}
               align={'center'}
               w={{base:'100%'}}
-              h={{ base: '100%', sm: '400px', lg: '600px' }}
+              h={{ base: '100%', sm: '400px', lg: '650px' }}
               boxShadow={'dark-lg'}
             />
             </Box>
-          <Stack spacing={{ base: 5 }} boxShadow={'dark-lg'} padding={'5'} wrap='wrap' h={'600px'}>
+          <Stack spacing={{ base: 7 }} boxShadow={'dark-lg'} padding={'4'} wrap='wrap' h={{lg:'650px', sm:'900px'}}>
           
             <Box as={'header'}>
               <Heading
@@ -62,11 +62,11 @@ import NextLink from '../Contracts/NextLink/NextLink';
                 color={useColorModeValue('orange.500','purple.400')}
                 fontWeight={500}
                 fontSize={'2xl'}>
-                ${(parseFloat(product.price) - parseFloat(product.price) * 0.10).toFixed(2).toString().replace('.',',')} USD
+                R${(parseFloat(product.price) - parseFloat(product.price) * 0.10).toFixed(2).toString().replace('.',',')}
                 
               </Text>
               <Text textDecoration={'line-through'} color={'red.600'}>
-                ${product.price.replace('.',',')} USD
+                R${parseFloat(product.price).toFixed(2).replace('.',',')}
               </Text>
             </Box>
   

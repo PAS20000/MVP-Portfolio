@@ -178,7 +178,7 @@ import ProductRegisterForm from './ProductRegisterForm';
                 </Button>
                 <Square>
                 <NextLink text={
-                                <Button leftIcon={<FaShopify/>} 
+                                <Button leftIcon={<FaShopify/>}
                                 bgGradient={useColorModeValue("linear(to-r, red.400,orange.400)","linear(to-r, purple.400,pink.400)")}
                                 color={'white'}
                                 _hover={{

@@ -4,6 +4,8 @@ import connect from '../../src/utils/mongo';
 import { ObjectId } from 'mongodb';
 import Nav from '../../src/components/Navbar/Navbar';
 import Footer from '../../src/components/Footer/Footer';
+import { useRouter } from 'next/router';
+import Load from '../../src/components/Cards/LoadCard';
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -20,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return{
         paths:[
            { params: { 
-            product_id: '6233ca700e34d10fa6398580',
+            product_id: '62346f4f92ea4918b984d6b1',
          }},
         ],
         fallback: true,
@@ -47,7 +49,12 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 
 export default function Product({ product }){
-   
+   const { isFallback } = useRouter()
+   if(isFallback){
+       return(
+           <Load/>
+       )
+   }
     return(
         <div>
             <header>
