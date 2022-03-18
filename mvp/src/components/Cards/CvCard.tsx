@@ -232,7 +232,7 @@ import NextLink from '../Contracts/NextLink/NextLink';
                          <NextLink href={'#'} target='' 
                         text={
                           <Button colorScheme='whatsapp' variant={'ghost'} leftIcon={<FaFileInvoice/>} mt={1}>
-                            Cuminicativo
+                            Comunicativo
                           </Button>
                         }
                         />
