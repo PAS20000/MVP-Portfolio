@@ -51,7 +51,8 @@ export default function Nav() {
                     src={session.user.image}
                   />
                 </MenuButton>
-                <MenuList alignItems={'center'}>
+                <MenuList alignItems={'center'} 
+                  zIndex={2}>
                   <br />
                   <Center>
                     <Avatar

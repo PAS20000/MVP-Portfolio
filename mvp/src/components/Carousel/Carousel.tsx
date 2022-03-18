@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, IconButton, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick';
 import ProductCard from '../Cards/ProductCard';
+import { axiosConfig } from '../../utils/service/axiosConfig';
 
 // Settings for the slider
 const settings = {
@@ -20,22 +21,21 @@ const settings = {
 };
 
 export default function Carousel() {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
-  const [slider, setSlider] = React.useState<Slider | null>(null);
 
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
+  const [slider, setSlider] = React.useState<Slider | null>(null);
+  const [products, setProducts] = useState([])
+  
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '10px' });
 
-  // These are the images used in the slide
-  const cards = [
-    '/img/digital_art.jpg',
-    'https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-    'https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-  ];
-
+  useEffect(() => {
+    const getProducts = async () => {
+      const products = await axiosConfig.get('/api/product/')
+      setProducts(products.data.products)
+    }
+    
+    getProducts()
+  }, [])
   return (
     <Box
       position={'relative'}
@@ -82,8 +82,14 @@ export default function Carousel() {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((url, index) => (
-          <ProductCard key={index} imgUrl={url}/>
+        {products.slice(0,3).map((product) => (
+          <ProductCard 
+            key={product._id} 
+            productImage={product.productImage}
+            productName={product.productName} 
+            productPrice={product.price}
+            productCategory={product.category}
+          />
         ))}
       </Slider>
     </Box>

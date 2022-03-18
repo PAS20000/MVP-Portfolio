@@ -190,7 +190,8 @@ import ProductRegisterForm from './ProductRegisterForm';
                               } 
                                  href='/products/' 
                                  target={undefined}
-                                /></Square>
+                                />
+                </Square>
                 <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
                         <ModalOverlay />
                         <ModalContent>
@@ -199,19 +200,19 @@ import ProductRegisterForm from './ProductRegisterForm';
                               <ModalCloseButton />
                                 <Square>
                                 <NextLink text={
-                                  <Button colorScheme={useColorModeValue('orange','purple')} mr={2}>
-                                      Lista de produtos
-                                  </Button>
+                                <Button leftIcon={<FaShopify/>} 
+                                bgGradient={useColorModeValue("linear(to-r, red.400,orange.400)","linear(to-r, purple.400,pink.400)")}
+                                color={'white'}
+                                _hover={{
+                                  bgGradient: useColorModeValue('linear(to-r, orange.600,red.600)','linear(to-r, pink.600,purple.600)'),
+                                  boxShadow: 'xl',
+                                }}>
+                                    Lista de produtos
+                                </Button>
                                 } 
                                  href='/products/' 
                                  target={undefined}
                                 />
-                                <Button colorScheme={'red'} mr={2}>
-                                      Excluir
-                                </Button>
-                                 <Button colorScheme={'blue'}>
-                                      Editar
-                                  </Button>
                               </Square>
                             </ModalBody>
                         </ModalContent>

@@ -1,35 +1,28 @@
-import { GetServerSideProps } from "next";
-import { getSession } from 'next-auth/react'
+import { GetStaticProps } from "next";
 import {
-  Wrap,
-  Square,
-  WrapItem,
+  Flex
 } from '@chakra-ui/react';
 import Nav from "../src/components/Navbar/Navbar";
 import Footer from "../src/components/Footer/Footer";
-import ProductCard from "../src/components/Cards/ProductCard";
 import ServiceCard from "../src/components/Cards/ServiceCard";
+import connect from "../src/utils/mongo";
+import ProductCard from "../src/components/Cards/ProductCard";
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-    const session = await getSession({ req })
-    
-    if(!session){
-        return{
-            redirect:{
-                destination:'/401/',
-                permanent:false
-            }
-        }
-    }
+
+export const getStaticProps: GetStaticProps = async () => {
+
+    const { db } = await connect()
+    const Findproducts = await db.collection('products').find({}).toArray()
+    const products = JSON.stringify(Findproducts)
 
     return{
-        props:{}
+        props:{
+            products:JSON.parse(products)
+        }
     }
 }
 
-
-
-export default function Products({}) {
+export default function Products({ products }) {
 
     return(
         <div>
@@ -38,13 +31,17 @@ export default function Products({}) {
             </header>
             <main>
                 <ServiceCard/>
-                <Wrap> 
-                    <Square>
-                        <WrapItem>
-                            <ProductCard imgUrl={undefined}/>
-                        </WrapItem>
-                    </Square>
-                </Wrap>
+                <Flex flexWrap={'wrap'}>
+                {products.map((product) => (
+                    <ProductCard
+                        key={product._id}
+                        productName={product.productName} 
+                        productPrice={product.price}
+                        productCategory={product.category}
+                        productImage={product.productImage}
+                    />
+                ))}
+                </Flex>
             </main>
             <footer>
                 <Footer/>

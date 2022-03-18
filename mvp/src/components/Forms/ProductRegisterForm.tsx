@@ -130,7 +130,7 @@ export default function ProductRegisterForm() {
             Preço:
             </FormLabel>
             <Input
-            placeholder="Preço"
+            placeholder="Por padrão é aplicado 10% de desconto"
             bg={useColorModeValue('white','gray.800')}
             border={0}
             color={'gray.500'}

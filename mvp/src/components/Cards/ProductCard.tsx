@@ -8,8 +8,13 @@ import {
   Image,
 } from '@chakra-ui/react';
 
-export default function ProductCard({ imgUrl }) {
-
+export default function ProductCard({  
+  productName, 
+  productPrice,
+  productCategory,
+  productImage
+}) {
+ 
   return (
     <Center py={12}>
       <Box
@@ -35,7 +40,7 @@ export default function ProductCard({ imgUrl }) {
             pos: 'absolute',
             top: 5,
             left: 0,
-            backgroundImage: `url(${imgUrl ? imgUrl:'/img/digital_art.jpg'})`,
+            backgroundImage: `url(${productImage ? productImage:'/img/digital_art.jpg'})`,
             filter: 'blur(15px)',
             zIndex: -1,
           }}
@@ -49,22 +54,22 @@ export default function ProductCard({ imgUrl }) {
             height={230}
             width={282}
             objectFit={'cover'}
-            src={imgUrl ? imgUrl:'/img/digital_art.jpg'}
+            src={productImage ? productImage:'/img/digital_art.jpg'}
           />
         </Box>
         <Stack pt={10} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-            Brand
+            {productCategory}
           </Text>
           <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-            Nice Chair, pink
+            {productName}
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
-              $57,99
+              ${(parseFloat(productPrice) - parseFloat(productPrice) * 0.10).toFixed(2).toString().replace('.',',')}
             </Text>
             <Text textDecoration={'line-through'} color={'gray.600'}>
-              $199,99
+              ${productPrice.replace('.',',')}
             </Text>
           </Stack>
         </Stack>
