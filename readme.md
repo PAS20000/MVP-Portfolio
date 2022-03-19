@@ -2,6 +2,6 @@
 
 [🔗 Portfólio](https://mvp-portfolio-pas19.vercel.app/)
 
-![](/img/products.png)
+![](/mvp/public/img/products.png)
 
 ## 🚀Aplicação para demonstração.🚀
