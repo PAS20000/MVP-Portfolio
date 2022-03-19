@@ -12,7 +12,7 @@ export default function NotFound() {
   const toast = useToast()
 
     const userRegister = async () => {
-      axiosConfig.post('/api/user/', {
+      await axiosConfig.post('/api/user/', {
         name:session.user.name,
         email:session.user.email,
         image:session.user.image
@@ -24,9 +24,7 @@ export default function NotFound() {
         duration: 9000,
         isClosable: true,
       })
-      setTimeout(() => {
-        router.push('/dashboard/')
-      }, 600);    
+     router.push('/dashboard/')
     }
     
   return (
