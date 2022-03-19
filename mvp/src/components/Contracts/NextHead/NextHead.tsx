@@ -12,7 +12,7 @@ const NextHead = ({ title, description, robots, googleBot, canonical }) => {
                 }
                 <meta property='og:type' content='website' key='website'/>
                 <meta property='og:locale' content='pt_BR' key='locale'/>
-                <meta property='og:url' content='https://mvp-portfolio.vercel.app/' key='url'/>
+                <meta property='og:url' content='https://mvp-portfolio.vercel.app/img/products.png' key='url'/>
                 <meta property='og:title' content={title} key='titleog'/>
                 <meta property='og:site_name' content='MVP' key='site_name'/>
                 <meta property='og:description' content={description} key='descriptionog'/>
