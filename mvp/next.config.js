@@ -16,7 +16,7 @@ module.exports = {
                 key:'x-robots-tag',
                 value:'all',
                 key:'Access-Control-Allow-Origin',
-                value:'all'
+                value:'*'
             }]
         }]
     }
