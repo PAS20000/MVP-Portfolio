@@ -59,7 +59,7 @@ export default function ProductRegisterForm() {
                 isClosable:true
             })
         }
-
+        
             const formData = new FormData();
             formData.append('productName',`${name.toUpperCase()}`);
             formData.append('category',`${category.toUpperCase()}`);

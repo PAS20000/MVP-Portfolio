@@ -16,15 +16,17 @@ export default function NotFound() {
         name:session.user.name,
         email:session.user.email,
         image:session.user.image
-      })    
-      toast({
-        title: 'Sua conta está ativa',
-        description: "Tudo certo!",
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
       })
-      router.push('/dashboard/')
+      setTimeout(() => {
+        router.push('/dashboard/')
+        toast({
+          title: 'Sua conta está ativa',
+          description: "Tudo certo!",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
+      }, 600);    
     }
     
   return (

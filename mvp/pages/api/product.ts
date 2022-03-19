@@ -61,7 +61,7 @@ const handler = nc<NextApiReq, NextApiResponse>({})
 
         } catch (e) {
 
-            return res.status(500).json({ error: "Product not Created, crash server" }), console.log(e)
+            return res.status(500).json({ error: "Product not Created, server error" }), console.log(e)
         }
     })
 
