@@ -14,6 +14,8 @@ module.exports = {
                 key:'X-Frame-Options',
                 value:'DENY',
                 key:'x-robots-tag',
+                value:'all',
+                key:'Access-Control-Allow-Origin',
                 value:'all'
             }]
         }]
