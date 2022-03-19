@@ -19,14 +19,14 @@ export default function NotFound() {
       })
       setTimeout(() => {
         router.push('/dashboard/')
-        toast({
-          title: 'Sua conta está ativa',
-          description: "Tudo certo!",
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        })
       }, 600);    
+      toast({
+        title: 'Sua conta está ativa',
+        description: "Tudo certo!",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
     }
     
   return (
