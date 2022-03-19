@@ -17,9 +17,6 @@ export default function NotFound() {
         email:session.user.email,
         image:session.user.image
       })
-      setTimeout(() => {
-        router.push('/dashboard/')
-      }, 600);    
       toast({
         title: 'Sua conta está ativa',
         description: "Tudo certo!",
@@ -27,6 +24,9 @@ export default function NotFound() {
         duration: 9000,
         isClosable: true,
       })
+      setTimeout(() => {
+        router.push('/dashboard/')
+      }, 600);    
     }
     
   return (
