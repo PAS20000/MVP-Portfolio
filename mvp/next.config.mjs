@@ -19,10 +19,10 @@ export async function headers() {
             key: 'x-robots-tag',
             value: 'all'
         },
-	{	
-	   key:'Access-Control-Allow-Origin',
-           value:'*'
-	}
+	    {	
+	        key:'Access-Control-Allow-Origin',
+            value:'*'
+	    }
       ]
    }]
 }
