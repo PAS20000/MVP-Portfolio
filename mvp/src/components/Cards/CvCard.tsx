@@ -55,7 +55,7 @@ import NextLink from '../Contracts/NextLink/NextLink';
               objectFit="cover"
               boxSize="100%"
               src={
-                '/img/eu.png'
+                '/img/eu.jpg'
               }
             />
           </Flex>
