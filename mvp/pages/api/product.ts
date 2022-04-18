@@ -20,7 +20,7 @@ const handler = nc<NextApiReq, NextApiResponse>({})
             const { db } = await connect()
             const products = await db.collection('products').find({}).toArray()
 
-            return res.status(201).json({ products })
+            return res.status(201).json(products)
         } catch (e) {
 
             return res.status(500).json({ error: 'Server error, products not find' }), console.log(e)

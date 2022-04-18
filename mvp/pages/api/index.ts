@@ -5,31 +5,8 @@ import connect from '../../src/utils/mongo'
 
 const handler = nc({})
 
-.use(Auth)
-.get((req:NextApiRequest, res:NextApiResponse) => {
+.options((req:NextApiRequest, res:NextApiResponse) => {
     return res.status(200).json({M:true})
 })
-.post( async (req:NextApiRequest, res:NextApiResponse) => {
-   
-   const { email } = req.body  
-
-   try {
-        const { db } = await connect()
-        const find = await db.collection('users').findOne({
-            email:email
-        })
-        
-       if(find.email === "pedro.augusto.schroeder@gmail.com"){
-           return res.status(200).json({message:'Hellow PAS'})
-        } else {
-            return res.status(403).json({message:'Not Auth'})
-        }
-    
-   } catch (e) {
-    
-    return res.status(500).json({error:"Server Error"}), console.log(e)
-   }
-})
-
 
 export default handler
